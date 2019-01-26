@@ -22,6 +22,7 @@ public class PuzzlePiece : MonoBehaviour {
 		collider.enabled = false;
 		transform.position = solution.position;
 		transform.parent = solution;
+		SendMessage("ReleaseSelf");
 	}
 
 	bool IsSolution(PuzzlePiece otherPiece) {
