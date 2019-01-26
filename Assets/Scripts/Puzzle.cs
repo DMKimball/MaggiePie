@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Puzzle : MonoBehaviour {
 	void Start() {
-		foreach (var spriteRenderer in GetComponentsInChildren<SpriteRenderer>()) {
-			var color = spriteRenderer.color;
-			color.a = .25f;
-			spriteRenderer.color = color;
+		var solution = transform.Find("Solution");
+		for (var i = 0; i < solution.transform.childCount; ++i) {
+			var solutionPiece = solution.transform.GetChild(i);
+			solutionPiece.SendMessage("SetSolution");
 		}
 	}
 }
