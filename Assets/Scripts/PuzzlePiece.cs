@@ -3,15 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzlePiece : MonoBehaviour {
-	void OnTriggerEnter2D(Collider2D other) {
-		var isSolution = other.transform.parent.name == "Solution";
-		if (isSolution && other.transform.childCount == 0) {
-			var rigidbody = GetComponent<Rigidbody2D>();
+	void SetSolution() {
+		var rigidbody = GetComponent<Rigidbody2D>();
+		if (rigidbody != null) {
 			rigidbody.bodyType = RigidbodyType2D.Static;
-			var collider = GetComponent<BoxCollider2D>();
-			collider.enabled = false;
-			transform.position = other.transform.position;
-			transform.parent = other.transform;
+		}
+		var collider = GetComponent<BoxCollider2D>();
+		collider.isTrigger = true;
+		collider.enabled = true;
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer.enabled = false;
+	}
+
+	void SnapToSolution(Transform solution) {
+		var rigidbody = GetComponent<Rigidbody2D>();
+		rigidbody.bodyType = RigidbodyType2D.Static;
+		var collider = GetComponent<BoxCollider2D>();
+		collider.enabled = false;
+		transform.position = solution.position;
+		transform.parent = solution;
+	}
+
+	bool IsSolution(PuzzlePiece otherPiece) {
+		if (!(transform.parent != null
+			&& transform.parent.name == "Solution"
+			&& transform.childCount == 0)) {
+			return false;
+		}
+
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+		var otherSpriteRenderer = otherPiece.GetComponent<SpriteRenderer>();
+		return spriteRenderer.sprite == otherSpriteRenderer.sprite;
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		var otherPiece = other.GetComponent<PuzzlePiece>();
+		if (otherPiece != null && otherPiece.IsSolution(this)) {
+			SnapToSolution(other.transform);
 		}
 	}
 }
