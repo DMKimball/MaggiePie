@@ -359,9 +359,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17eb4a9c65221194ca7be5ad10132372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fJumpForce: 10
+  m_fJumpForce: 7.5
   m_fHorizontalSpeed: 5
   m_fHorizontalInputCutoff: 0.75
+  m_fJumpResetAngleCutoff: 45
+  m_iMaxJumps: 3
 --- !u!1 &759821025
 GameObject:
   m_ObjectHideFlags: 0
