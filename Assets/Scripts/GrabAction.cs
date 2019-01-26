@@ -35,16 +35,7 @@ public class GrabAction : MonoBehaviour
         Grabbable grabbableScript = collision.gameObject.GetComponent<Grabbable>();
         if (m_GrabbableScript == null && grabbableScript != null && collision.rigidbody != null)
         {
-            m_GrabbableScript = grabbableScript;
-            m_GrabbableScript.SetGrabber(this);
-            if (m_GrabAnchor != null)
-            {
-                collision.transform.position = m_GrabAnchor.position;
-            }
-            m_GrabbedRigidbody2D = collision.rigidbody;
-            m_GrabbedRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-            m_ConnectingJoint2D = gameObject.AddComponent<FixedJoint2D>();
-            m_ConnectingJoint2D.connectedBody = m_GrabbedRigidbody2D;
+            GrabObject(grabbableScript);
         }
     }
 
@@ -64,6 +55,9 @@ public class GrabAction : MonoBehaviour
         m_GrabbableScript.SetGrabber(this);
         if (m_GrabAnchor != null)
         {
+            Vector3 vAnchorOffset = transform.position - m_GrabAnchor.position;
+            transform.position = transform.position + vAnchorOffset * 0.5f;
+
             grabbableScript.transform.position = m_GrabAnchor.position;
         }
         m_GrabbedRigidbody2D = grabbableScript.GetComponent<Rigidbody2D>();
@@ -81,5 +75,10 @@ public class GrabAction : MonoBehaviour
             m_ConnectingJoint2D = null;
             m_GrabbableScript = null;
         }
+    }
+
+    public bool IsGrabbing()
+    {
+        return m_GrabbableScript != null;
     }
 }

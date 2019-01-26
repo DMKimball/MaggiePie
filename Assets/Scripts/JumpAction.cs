@@ -27,7 +27,7 @@ public class JumpAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Jump") != 0.0f || Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Jump") > m_fHorizontalInputCutoff || Input.GetAxis("Vertical") > m_fHorizontalInputCutoff)
         {
             if (!m_bJumpIsPressed)
             {

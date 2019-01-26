@@ -23,6 +23,14 @@ public class Grabbable : MonoBehaviour
         m_GrabberScript = grabScript;
     }
 
+    public void ReleaseSelf()
+    {
+        if (m_GrabberScript)
+        {
+            m_GrabberScript.ReleaseObject();
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (m_GrabberScript)

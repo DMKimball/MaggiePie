@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: a1a543c6a1cc7e947be34ee684c6358a
+guid: f8042967ac986b6418d17173da26cca7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Magpie-Sheet-FlyJump_0
-    21300002: Magpie-Sheet-FlyJump_1
-    21300004: Magpie-Sheet-FlyJump_2
-    21300006: Magpie-Sheet-FlyJump_3
-    21300008: Magpie-Sheet-FlyJump_4
-    21300010: Magpie-Sheet-FlyJump_5
-    21300012: Magpie-Sheet-FlyJump_6
-    21300014: Magpie-Sheet-FlyJump_7
+    21300000: Magpie-Sheet-FlyJump-Carry_0
+    21300002: Magpie-Sheet-FlyJump-Carry_1
+    21300004: Magpie-Sheet-FlyJump-Carry_2
+    21300006: Magpie-Sheet-FlyJump-Carry_3
+    21300008: Magpie-Sheet-FlyJump-Carry_4
+    21300010: Magpie-Sheet-FlyJump-Carry_5
+    21300012: Magpie-Sheet-FlyJump-Carry_6
+    21300014: Magpie-Sheet-FlyJump-Carry_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -103,161 +103,161 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_0
+      name: Magpie-Sheet-FlyJump-Carry_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 30
         y: 20
-        width: 1452.875
-        height: 978
+        width: 1447.5
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 808b2ab887eac1a4aad5602c1a16ef84
+      spriteID: 3db611f6e627e8c4497bfc943efecb94
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_1
+      name: Magpie-Sheet-FlyJump-Carry_1
       rect:
         serializedVersion: 2
-        x: 1517
+        x: 1527
         y: 20
-        width: 1452.875
-        height: 978
+        width: 1447.5
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0eece5423a3013749851aeae2b728c83
+      spriteID: 485c8f5aa8c7a7b4dae5d164e76356af
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_2
+      name: Magpie-Sheet-FlyJump-Carry_2
       rect:
         serializedVersion: 2
-        x: 3014
+        x: 3024
         y: 20
-        width: 1452.875
-        height: 978
+        width: 1447.5
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d55d44f1dba0a84484e2aa45670eb8e
+      spriteID: 858f1ae0e89edb74789d205b879729dd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_3
+      name: Magpie-Sheet-FlyJump-Carry_3
       rect:
         serializedVersion: 2
-        x: 4517
+        x: 4521
         y: 20
-        width: 1453
-        height: 978
+        width: 1447.5
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47ade66ba771e5441ae8a133baa7a44e
+      spriteID: 40f1299f6e389884a9a2dc86543934e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_4
+      name: Magpie-Sheet-FlyJump-Carry_4
       rect:
         serializedVersion: 2
-        x: 6016
+        x: 6022
         y: 20
-        width: 1453
-        height: 978
+        width: 1448
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27dc96faa28a8304987934b04483e4cb
+      spriteID: c35513697269411418f44e73796d7ef6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_5
+      name: Magpie-Sheet-FlyJump-Carry_5
       rect:
         serializedVersion: 2
-        x: 7516
+        x: 7525
         y: 20
-        width: 1453
-        height: 978
+        width: 1462
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b752cf94806c1a44e9f7bedaea1b0603
+      spriteID: d21ca4a12ba544940bab724cb85d258a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_6
+      name: Magpie-Sheet-FlyJump-Carry_6
       rect:
         serializedVersion: 2
-        x: 9016
+        x: 9030
         y: 20
-        width: 1453
-        height: 978
+        width: 1448
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb5721e441cdc3478bbb2972b269277
+      spriteID: fce857634dfb6854ca094a993bccc2d6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Magpie-Sheet-FlyJump_7
+      name: Magpie-Sheet-FlyJump-Carry_7
       rect:
         serializedVersion: 2
-        x: 10520
+        x: 10525
         y: 20
-        width: 1453
-        height: 978
+        width: 1448
+        height: 1169
       alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      pivot: {x: 0.41, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3af4094fdccd9d4fb9ae156457051fc
+      spriteID: 76e32fd22fa41664e915228e0a7dc0a7
       vertices: []
       indices: 
       edges: []
@@ -265,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8d8a3a601ddb64448892bf5caf01915e
+    spriteID: 15cf13a1f05d6ea4e86b6c1bfdbfe96b
     vertices: []
     indices: 
     edges: []
