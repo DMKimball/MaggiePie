@@ -50,4 +50,8 @@ public class Grabbable : MonoBehaviour
     public bool IsGrabbedByEnemy() {
         return m_GrabberScript && m_GrabberScript.gameObject.name != "MagpiePC";
     }
+
+    public void OnRespawn() {
+        ReleaseSelf(0);
+    }
 }

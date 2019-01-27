@@ -28,23 +28,11 @@ public class RespawnScript : MonoBehaviour
         {
             transform.position = m_RespawnPoint.position;
 
-            GrabAction grabber = GetComponent<GrabAction>();
-            if (grabber)
-            {
-                grabber.ReleaseObject(0);
+            foreach (Rigidbody2D rigidbody in GetComponents<Rigidbody2D>()) {
+                rigidbody.velocity = new Vector2();
             }
 
-            Grabbable grabbable = GetComponent<Grabbable>();
-            if (grabbable)
-            {
-                grabbable.ReleaseSelf(0);
-            }
-
-            EnemyBird enemyBird = GetComponent<EnemyBird>();
-            if (enemyBird)
-            {
-                enemyBird.Start();
-            }
+            SendMessage("OnRespawn");
         }
     }
 }
