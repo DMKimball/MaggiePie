@@ -8,14 +8,13 @@ public class PuzzlePiece : MonoBehaviour {
 		var spriteRenderer = GetComponent<SpriteRenderer>();
 		return spriteRenderer && spriteRenderer.enabled
 			&& spriteRenderer.isVisible
-			&& rigidbody.bodyType != RigidbodyType2D.Static;
+			&& rigidbody && rigidbody.bodyType != RigidbodyType2D.Static;
 	}
 
 	void SetSolution() {
 		var rigidbody = GetComponent<Rigidbody2D>();
-		if (rigidbody != null) {
+		if (rigidbody)
 			rigidbody.bodyType = RigidbodyType2D.Static;
-		}
 		var collider = GetComponent<BoxCollider2D>();
 		collider.isTrigger = true;
 		collider.enabled = true;
@@ -28,7 +27,8 @@ public class PuzzlePiece : MonoBehaviour {
 
 	void SnapToSolution(Transform solution) {
 		var rigidbody = GetComponent<Rigidbody2D>();
-		rigidbody.bodyType = RigidbodyType2D.Static;
+		if (rigidbody)
+			rigidbody.bodyType = RigidbodyType2D.Static;
 		var collider = GetComponent<BoxCollider2D>();
 		collider.enabled = false;
 		transform.position = solution.position;

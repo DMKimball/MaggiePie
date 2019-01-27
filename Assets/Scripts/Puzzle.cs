@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Puzzle : MonoBehaviour {
-	private Dictionary<string, PuzzlePiece> _enemyGrabbablePieces;
+	private Dictionary<int, PuzzlePiece> _enemyGrabbablePieces;
 
 	void Start() {
-		_enemyGrabbablePieces = new Dictionary<string, PuzzlePiece>();
+		_enemyGrabbablePieces = new Dictionary<int, PuzzlePiece>();
 		var solution = transform.Find("Solution");
 		for (var i = 0; i < solution.transform.childCount; ++i) {
 			var solutionPiece = solution.transform.GetChild(i);
@@ -17,10 +17,12 @@ public class Puzzle : MonoBehaviour {
 	void Update() {
 		var pieces = GetComponentsInChildren<PuzzlePiece>();
 		foreach (PuzzlePiece piece in pieces) {
+			var id = piece.GetInstanceID();
 			if (piece.IsGrabbableByEnemy()) {
-				_enemyGrabbablePieces.Add(piece.name, piece);
+				if (!_enemyGrabbablePieces.ContainsKey(id))
+					_enemyGrabbablePieces.Add(id, piece);
 			} else {
-				_enemyGrabbablePieces.Remove(piece.name);
+				_enemyGrabbablePieces.Remove(id);
 			}
 		}
 	}
