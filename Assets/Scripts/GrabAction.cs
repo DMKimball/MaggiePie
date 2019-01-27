@@ -5,33 +5,31 @@ using UnityEngine;
 public class GrabAction : MonoBehaviour
 {
     [SerializeField] private Transform m_GrabAnchor = null;
-    [SerializeField] private JumpAction m_JumpActionScript= null;
     [SerializeField] private SoundManager m_SoundManager = null;
 
-    private Rigidbody2D m_Rigidbody2D = null;
-    private Rigidbody2D m_GrabbedRigidbody2D = null;
     private FixedJoint2D m_ConnectingJoint2D = null;
     private Grabbable m_GrabbableScript = null;
+    private float _grabDisabledTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody2D = GetComponent<Rigidbody2D>();
         m_SoundManager = GetComponent<SoundManager>();
-        m_GrabbedRigidbody2D = null;
         m_ConnectingJoint2D = null;
         m_GrabbableScript = null;
+	_grabDisabledTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+	_grabDisabledTime = Mathf.Max(0, _grabDisabledTime - Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
 	Grabbable grabbableScript = collider.gameObject.GetComponent<Grabbable>();
-	if (m_GrabbableScript == null && grabbableScript != null && collider.attachedRigidbody != null)
+	if (collider.attachedRigidbody != null)
         {
             GrabObject(grabbableScript);
         }
@@ -40,7 +38,7 @@ public class GrabAction : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
 	Grabbable grabbableScript = collision.gameObject.GetComponent<Grabbable>();
-	if (m_GrabbableScript == null && grabbableScript != null && collision.otherRigidbody != null)
+	if (collision.rigidbody != null)
         {
             GrabObject(grabbableScript);
         }
@@ -48,29 +46,35 @@ public class GrabAction : MonoBehaviour
 
     public void OnGrabbedObjectCollisionEnter2D(Collision2D collision)
     {
-        if (m_JumpActionScript != null)
-        {
-            m_JumpActionScript.OnGrabbedObjectEnterCollision(collision);
-        }
+	    var jumpAction = GetComponent<JumpAction>();
+	    if (jumpAction)
+		    jumpAction.OnGrabbedObjectEnterCollision(collision);
     }
 
     public void OnGrabbedObjectCollisionExit2D(Collision2D collision)
     {
-        if (m_JumpActionScript != null)
-        {
-            m_JumpActionScript.OnGrabbedObjectExitCollision(collision);
-        }
+	    var jumpAction = GetComponent<JumpAction>();
+	    if (jumpAction)
+		    jumpAction.OnGrabbedObjectExitCollision(collision);
     }
 
     public void GrabObject(Grabbable grabbableScript)
     {
-        ReleaseObject();
+	if (!(m_GrabbableScript == null && grabbableScript != null))
+		return;
+
+	if (_grabDisabledTime > 0)
+		return;
+
+        ReleaseObject(0);
+
         if (m_SoundManager)
         {
             m_SoundManager.PlayGrab();
         }
 
         m_GrabbableScript = grabbableScript;
+        m_GrabbableScript.ReleaseSelf(1);
         m_GrabbableScript.SetGrabber(this);
         if (m_GrabAnchor != null)
         {
@@ -79,13 +83,14 @@ public class GrabAction : MonoBehaviour
 
             grabbableScript.transform.position = m_GrabAnchor.position;
         }
-        m_GrabbedRigidbody2D = grabbableScript.GetComponent<Rigidbody2D>();
-        m_GrabbedRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        var grabbedRigidbody2D = grabbableScript.GetComponent<Rigidbody2D>();
+        grabbedRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         m_ConnectingJoint2D = gameObject.AddComponent<FixedJoint2D>();
-        m_ConnectingJoint2D.connectedBody = m_GrabbedRigidbody2D;
+        m_ConnectingJoint2D.connectedBody = grabbedRigidbody2D;
+	SendMessage("OnGrabObject", grabbableScript);
     }
 
-    public void ReleaseObject()
+    public void ReleaseObject(float disableGrabTime)
     {
         if (m_GrabbableScript)
         {
@@ -98,6 +103,7 @@ public class GrabAction : MonoBehaviour
             Destroy(m_ConnectingJoint2D);
             m_ConnectingJoint2D = null;
             m_GrabbableScript = null;
+	    _grabDisabledTime = disableGrabTime;
         }
     }
 
