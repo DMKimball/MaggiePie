@@ -18,10 +18,12 @@ public class Puzzle : MonoBehaviour {
 		var pieces = GetComponentsInChildren<PuzzlePiece>();
 		foreach (PuzzlePiece piece in pieces) {
 			var id = piece.GetInstanceID();
+			var containsKey = _enemyGrabbablePieces.ContainsKey(id);
 			if (piece.IsGrabbableByEnemy()) {
-				if (!_enemyGrabbablePieces.ContainsKey(id))
+				if (!containsKey) {
 					_enemyGrabbablePieces.Add(id, piece);
-			} else {
+				}
+			} else if (containsKey) {
 				_enemyGrabbablePieces.Remove(id);
 			}
 		}
@@ -32,7 +34,7 @@ public class Puzzle : MonoBehaviour {
 			return null;
 
 		var enumerator = _enemyGrabbablePieces.GetEnumerator();
-		var n = Random.Range(0, _enemyGrabbablePieces.Count - 1);
+		var n = Random.Range(1, _enemyGrabbablePieces.Count);
 		for (int i = 0; i < n; ++i)
 			enumerator.MoveNext();
 		return enumerator.Current.Value;
