@@ -13,6 +13,9 @@ public class PuzzlePiece : MonoBehaviour {
 		collider.enabled = true;
 		var spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.enabled = false;
+		var grabbable = GetComponent<Grabbable>();
+		if (grabbable)
+			grabbable.enabled = false;
 	}
 
 	void SnapToSolution(Transform solution) {
@@ -22,7 +25,10 @@ public class PuzzlePiece : MonoBehaviour {
 		collider.enabled = false;
 		transform.position = solution.position;
 		transform.parent = solution;
-		SendMessage("ReleaseSelf");
+
+		var grabbable = GetComponent<Grabbable>();
+		if (grabbable)
+			grabbable.ReleaseSelf(0);
 	}
 
 	bool IsSolution(PuzzlePiece otherPiece) {
@@ -38,6 +44,9 @@ public class PuzzlePiece : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		var grabbable = GetComponent<Grabbable>();
+		if (grabbable && grabbable.IsGrabbedByEnemy())
+			return;
 		var otherPiece = other.GetComponent<PuzzlePiece>();
 		if (otherPiece != null && otherPiece.IsSolution(this)) {
 			SnapToSolution(other.transform);

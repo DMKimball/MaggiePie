@@ -18,6 +18,10 @@ public class RespawnScript : MonoBehaviour
         
     }
 
+    public void SetRespawnPoint(Transform respawnPoint) {
+	    m_RespawnPoint = respawnPoint;
+    }
+
     public void Respawn()
     {
         if (m_RespawnPoint)
@@ -27,13 +31,19 @@ public class RespawnScript : MonoBehaviour
             GrabAction grabber = GetComponent<GrabAction>();
             if (grabber)
             {
-                grabber.ReleaseObject();
+                grabber.ReleaseObject(0);
             }
 
             Grabbable grabbable = GetComponent<Grabbable>();
             if (grabbable)
             {
-                grabbable.ReleaseSelf();
+                grabbable.ReleaseSelf(0);
+            }
+
+            EnemyBird enemyBird = GetComponent<EnemyBird>();
+            if (enemyBird)
+            {
+                enemyBird.Start();
             }
         }
     }

@@ -23,11 +23,11 @@ public class Grabbable : MonoBehaviour
         m_GrabberScript = grabScript;
     }
 
-    public void ReleaseSelf()
+    public void ReleaseSelf(float disableGrabTime)
     {
         if (m_GrabberScript)
         {
-            m_GrabberScript.ReleaseObject();
+            m_GrabberScript.ReleaseObject(disableGrabTime);
         }
     }
 
@@ -45,5 +45,9 @@ public class Grabbable : MonoBehaviour
         {
             m_GrabberScript.OnGrabbedObjectCollisionExit2D(collision);
         }
+    }
+
+    public bool IsGrabbedByEnemy() {
+        return m_GrabberScript && m_GrabberScript.gameObject.name != "MagpiePC";
     }
 }
