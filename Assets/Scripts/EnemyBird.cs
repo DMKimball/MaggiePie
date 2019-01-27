@@ -7,15 +7,29 @@ public class EnemyBird : MonoBehaviour
 	public float _baseSpeedMin = 6;
 	public float _baseSpeedInc = 1;
 	public float _baseSpeedMax = 11;
+	public AudioClip[] _sounds;
+
 	private float _speed;
 	private float _baseSpeed;
 	private Vector2 _direction;
 	private bool _readyToLaunch;
 
 	public void Start() {
+		StartCoroutine("SoundCoroutine");
 		_baseSpeed = _baseSpeedMin;
 		_readyToLaunch = true;
 		_speed = _baseSpeed;
+	}
+
+	IEnumerator SoundCoroutine() {
+		while (true) {
+			var audioSource = GetComponent<AudioSource>();
+			var clip = _sounds[Random.Range(0, _sounds.Length - 1)];
+			if (clip)
+				audioSource.clip = clip;
+			audioSource.Play();
+			yield return new WaitForSeconds(1.25f);
+		}
 	}
 
 	void Update() {
