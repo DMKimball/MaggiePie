@@ -46,4 +46,8 @@ public class Grabbable : MonoBehaviour
             m_GrabberScript.OnGrabbedObjectCollisionExit2D(collision);
         }
     }
+
+    public bool IsGrabbedByEnemy() {
+        return m_GrabberScript && m_GrabberScript.gameObject.name != "MagpiePC";
+    }
 }

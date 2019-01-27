@@ -41,6 +41,9 @@ public class PuzzlePiece : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		var grabbable = GetComponent<Grabbable>();
+		if (grabbable && grabbable.IsGrabbedByEnemy())
+			return;
 		var otherPiece = other.GetComponent<PuzzlePiece>();
 		if (otherPiece != null && otherPiece.IsSolution(this)) {
 			SnapToSolution(other.transform);
