@@ -13,6 +13,9 @@ public class PuzzlePiece : MonoBehaviour {
 		collider.enabled = true;
 		var spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.enabled = false;
+		var grabbable = GetComponent<Grabbable>();
+		if (grabbable)
+			grabbable.enabled = false;
 	}
 
 	void SnapToSolution(Transform solution) {
