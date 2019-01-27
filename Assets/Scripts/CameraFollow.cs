@@ -9,6 +9,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector2 m_vDistanceTolerance = new Vector2(1.5f, 3.0f);
     [SerializeField] private Vector2 m_vMaxDistance = new Vector2(10.0f, 8.0f);
     [SerializeField] private Vector2 m_vMoveSpeed = new Vector2(3.0f, 3.0f);
+    [SerializeField] private float m_fCameraVertAdjust = 2.0f;
+    [SerializeField] private float m_fVertAdjustInputCutoff = 0.5f;
 
     private Transform m_CurrentFollowAnchor = null;
 
@@ -29,6 +31,26 @@ public class CameraFollow : MonoBehaviour
         if (fHorizontal > 0)
         {
             m_CurrentFollowAnchor = m_RightCameraAnchor;
+        }
+
+        float fVertical = Input.GetAxis("Vertical");
+        if (fVertical > m_fVertAdjustInputCutoff)
+        {
+            Vector3 vLocalAnchorPos = m_CurrentFollowAnchor.localPosition;
+            vLocalAnchorPos.y = m_fCameraVertAdjust;
+            m_CurrentFollowAnchor.localPosition = vLocalAnchorPos;
+        }
+        else if (fVertical < -m_fVertAdjustInputCutoff)
+        {
+            Vector3 vLocalAnchorPos = m_CurrentFollowAnchor.localPosition;
+            vLocalAnchorPos.y = -m_fCameraVertAdjust;
+            m_CurrentFollowAnchor.localPosition = vLocalAnchorPos;
+        }
+        else
+        {
+            Vector3 vLocalAnchorPos = m_CurrentFollowAnchor.localPosition;
+            vLocalAnchorPos.y = 0;
+            m_CurrentFollowAnchor.localPosition = vLocalAnchorPos;
         }
 
         if (m_CurrentFollowAnchor)

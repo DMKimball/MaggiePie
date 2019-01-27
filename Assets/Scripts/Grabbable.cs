@@ -38,4 +38,12 @@ public class Grabbable : MonoBehaviour
             m_GrabberScript.OnGrabbedObjectCollisionEnter2D(collision);
         }
     }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (m_GrabberScript)
+        {
+            m_GrabberScript.OnGrabbedObjectCollisionExit2D(collision);
+        }
+    }
 }

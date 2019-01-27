@@ -14,6 +14,7 @@ public class JumpAction : MonoBehaviour
     private Rigidbody2D m_Rigidbody = null;
     private bool m_bJumpIsPressed = false;
 	private int m_iNumJumps = 0;
+    private bool m_bOnGround = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,8 @@ public class JumpAction : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_bJumpIsPressed = false;
-        m_iNumJumps = 0;
+        m_iNumJumps = m_iMaxJumps;
+        m_bOnGround = false;
     }
 
     // Update is called once per frame
@@ -64,6 +66,12 @@ public class JumpAction : MonoBehaviour
             vSpeed.x = fHorizontal * m_fHorizontalSpeed;
             m_Rigidbody.velocity = vSpeed;
         }
+        else if ( m_bOnGround )
+        {
+            Vector2 vSpeed = m_Rigidbody.velocity;
+            vSpeed.x = 0;
+            m_Rigidbody.velocity = vSpeed;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -73,13 +81,24 @@ public class JumpAction : MonoBehaviour
             if (Vector2.Dot(collision.contacts[i].normal, new Vector2(0.0f, 1.0f)) > Mathf.Cos(m_fJumpResetAngleCutoff * Mathf.Deg2Rad))
             {
                 m_iNumJumps = 0;
+                m_bOnGround = true;
                 break;
             }
         }
     }
 
-    public void OnGrabbedObjectCollision(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        m_bOnGround = false;
+    }
+
+    public void OnGrabbedObjectEnterCollision(Collision2D collision)
     {
         OnCollisionEnter2D(collision);
+    }
+
+    public void OnGrabbedObjectExitCollision(Collision2D collision)
+    {
+        OnCollisionExit2D(collision);
     }
 }

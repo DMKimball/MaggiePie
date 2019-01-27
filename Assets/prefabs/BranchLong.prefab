@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4631548032195077956}
   - component: {fileID: 2092482610034465843}
-  - component: {fileID: 1835283195855747003}
+  - component: {fileID: 892634963467384744}
   m_Layer: 0
   m_Name: BranchLong
   m_TagString: Untagged
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: b1f62a3cd32e0448888817d37b17c478, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1835283195855747003
-PolygonCollider2D:
+--- !u!61 &892634963467384744
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,7 +93,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.12, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -103,35 +103,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.6193424, y: -0.22321755}
-      - {x: 0.627819, y: -0.23169415}
-      - {x: 1.1279391, y: -0.23169415}
-      - {x: 1.2550883, y: -0.17235787}
-      - {x: 1.3737608, y: -0.13845141}
-      - {x: 1.50091, y: -0.12997481}
-      - {x: 1.7975914, y: -0.07911513}
-      - {x: 1.916264, y: -0.087591745}
-      - {x: 1.9332173, y: -0.07911513}
-      - {x: 1.9332173, y: 0.34471548}
-      - {x: 1.8993108, y: 0.3616687}
-      - {x: 1.7721616, y: 0.37862194}
-      - {x: 1.0177431, y: 0.37862194}
-      - {x: 0.6702021, y: 0.3616687}
-      - {x: 0.36504403, y: 0.34471548}
-      - {x: -0.050309967, y: 0.31928563}
-      - {x: -1.3302784, y: 0.24299613}
-      - {x: -1.6269598, y: 0.23451951}
-      - {x: -1.7202026, y: 0.22604291}
-      - {x: -1.7371558, y: 0.20908968}
-      - {x: -1.7286792, y: 0.18365984}
-      - {x: -1.6184832, y: 0.031080825}
-      - {x: -1.6693429, y: -0.045208685}
-      - {x: -1.6947727, y: -0.21474093}
-      - {x: -1.5761001, y: -0.28255382}
-      - {x: -1.4319978, y: -0.31646028}
-      - {x: -1.2539889, y: -0.31646028}
-      - {x: -0.8471115, y: -0.2740772}
-      - {x: -0.24527204, y: -0.24017076}
-      - {x: 0.017502932, y: -0.23169415}
+  serializedVersion: 2
+  m_Size: {x: 3.52, y: 0.54}
+  m_EdgeRadius: 0

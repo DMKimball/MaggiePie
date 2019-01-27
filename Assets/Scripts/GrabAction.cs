@@ -43,7 +43,15 @@ public class GrabAction : MonoBehaviour
     {
         if (m_JumpActionScript != null)
         {
-            m_JumpActionScript.OnGrabbedObjectCollision(collision);
+            m_JumpActionScript.OnGrabbedObjectEnterCollision(collision);
+        }
+    }
+
+    public void OnGrabbedObjectCollisionExit2D(Collision2D collision)
+    {
+        if (m_JumpActionScript != null)
+        {
+            m_JumpActionScript.OnGrabbedObjectExitCollision(collision);
         }
     }
 
