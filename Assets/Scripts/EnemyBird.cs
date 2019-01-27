@@ -13,7 +13,8 @@ public class EnemyBird : MonoBehaviour
 	}
 
 	void Update() {
-		if (_readyToLaunch) {
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+		if (_readyToLaunch && spriteRenderer && !spriteRenderer.isVisible) {
 			var puzzle = GameObject.FindObjectOfType<Puzzle>();
 			var puzzlePiece = puzzle.PickRandomPiece();
 			if (puzzlePiece) {
@@ -23,7 +24,6 @@ public class EnemyBird : MonoBehaviour
 		var rigidbody = GetComponent<Rigidbody2D>();
 		rigidbody.velocity = _direction * _speed;
 
-		var spriteRenderer = GetComponent<SpriteRenderer>();
 		if (spriteRenderer) {
 			spriteRenderer.flipX = _direction.x > 0;
 		}
