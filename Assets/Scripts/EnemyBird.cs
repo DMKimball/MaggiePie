@@ -21,4 +21,9 @@ public class EnemyBird : MonoBehaviour
 		var rigidbody = GetComponent<Rigidbody2D>();
 		rigidbody.velocity = _direction * _speed;
 	}
+
+	public void OnGrabObject(Grabbable grabbedObject) {
+		_speed *= .5f;
+		_direction.y = -_direction.y;
+	}
 }

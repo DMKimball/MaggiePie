@@ -25,7 +25,10 @@ public class PuzzlePiece : MonoBehaviour {
 		collider.enabled = false;
 		transform.position = solution.position;
 		transform.parent = solution;
-		SendMessage("ReleaseSelf");
+
+		var grabbable = GetComponent<Grabbable>();
+		if (grabbable)
+			grabbable.ReleaseSelf(0);
 	}
 
 	bool IsSolution(PuzzlePiece otherPiece) {

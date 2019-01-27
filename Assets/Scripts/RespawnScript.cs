@@ -27,13 +27,13 @@ public class RespawnScript : MonoBehaviour
             GrabAction grabber = GetComponent<GrabAction>();
             if (grabber)
             {
-                grabber.ReleaseObject();
+                grabber.ReleaseObject(0);
             }
 
             Grabbable grabbable = GetComponent<Grabbable>();
             if (grabbable)
             {
-                grabbable.ReleaseSelf();
+                grabbable.ReleaseSelf(0);
             }
         }
     }
