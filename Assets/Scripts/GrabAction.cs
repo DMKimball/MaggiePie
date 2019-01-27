@@ -90,7 +90,10 @@ public class GrabAction : MonoBehaviour
 	    grabbedCollider.isTrigger = !m_bIsPlayer;
         m_ConnectingJoint2D = gameObject.AddComponent<FixedJoint2D>();
         m_ConnectingJoint2D.connectedBody = grabbedRigidbody2D;
-	    //SendMessage("OnGrabObject", grabbableScript);
+        if (!m_bIsPlayer)
+        {
+            SendMessage("OnGrabObject", grabbableScript);
+        }
     }
 
     public void ReleaseObject(float disableGrabTime)
@@ -107,7 +110,10 @@ public class GrabAction : MonoBehaviour
 	        grabbedCollider.isTrigger = false;
             Destroy(m_ConnectingJoint2D);
             m_ConnectingJoint2D = null;
-	        //SendMessage("OnReleaseObject", disableGrabTime);
+            if (!m_bIsPlayer)
+            {
+	            SendMessage("OnReleaseObject", disableGrabTime);
+            }
             m_GrabbableScript = null;
 	        _grabDisabledTime = disableGrabTime;
         }
