@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class EnemyBird : MonoBehaviour
 {
-	public float _speed = 5;
+	public float _baseSpeedMin = 6;
+	public float _baseSpeedInc = 1;
+	public float _baseSpeedMax = 11;
+	private float _speed;
+	private float _baseSpeed;
 	private Vector2 _direction;
 	private bool _readyToLaunch;
 
 	public void Start() {
+		_baseSpeed = _baseSpeedMin;
 		_readyToLaunch = true;
+		_speed = _baseSpeed;
 	}
 
 	void Update() {
@@ -43,11 +49,21 @@ public class EnemyBird : MonoBehaviour
 	}
 
 	public void OnGrabObject(Grabbable grabbedObject) {
-		_speed *= .5f;
+		_speed = _baseSpeed/2;
+		_baseSpeed = Mathf.Max(_baseSpeedMin, _baseSpeed - _baseSpeedInc);
 		_direction.y = -_direction.y;
 	}
 
-	public void OnReleaseObject(Grabbable releasedObject) {
-		_speed *= 2.5f;
+	public void OnReleaseObject(float disableGrabTime) {
+		if (disableGrabTime > 0) {
+			_speed = _baseSpeedMax*1.5f;
+			_baseSpeed = Mathf.Min(_baseSpeedMax, _baseSpeed + _baseSpeedInc);
+		}
+	}
+
+	public void OnRespawn() {
+		_baseSpeed = Mathf.Min(_baseSpeedMax, _baseSpeed + _baseSpeedInc);
+		_readyToLaunch = true;
+		_speed = _baseSpeed;
 	}
 }

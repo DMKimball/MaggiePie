@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 5643013839934676506}
   - component: {fileID: 2947589921361509208}
   - component: {fileID: 5126466249748792353}
-  - component: {fileID: 595094200852221217}
   m_Layer: 0
   m_Name: Owl1
   m_TagString: Untagged
@@ -222,16 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2173f3738e0f1f9469061f73f5c0aced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
---- !u!114 &595094200852221217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718992536050563214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8640ed8906dc29e4cbef090cf392d320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _baseSpeedMin: 6
+  _baseSpeedInc: 1
+  _baseSpeedMax: 11

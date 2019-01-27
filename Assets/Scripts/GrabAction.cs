@@ -102,7 +102,7 @@ public class GrabAction : MonoBehaviour
             m_GrabbableScript.SetGrabber(null);
             Destroy(m_ConnectingJoint2D);
             m_ConnectingJoint2D = null;
-	    SendMessage("OnReleaseObject", m_GrabbableScript);
+	    SendMessage("OnReleaseObject", disableGrabTime);
             m_GrabbableScript = null;
 	        _grabDisabledTime = disableGrabTime;
         }
@@ -111,5 +111,9 @@ public class GrabAction : MonoBehaviour
     public bool IsGrabbing()
     {
         return m_GrabbableScript != null;
+    }
+
+    public void OnRespawn() {
+        ReleaseObject(0);
     }
 }
