@@ -60,11 +60,11 @@ public class GrabAction : MonoBehaviour
 
     public void GrabObject(Grabbable grabbableScript)
     {
-	if (!(m_GrabbableScript == null && grabbableScript != null))
-		return;
+	    if (!(m_GrabbableScript == null && grabbableScript != null))
+		    return;
 
-	if (_grabDisabledTime > 0)
-		return;
+	    if (_grabDisabledTime > 0)
+		    return;
 
         ReleaseObject(0);
 
@@ -87,7 +87,7 @@ public class GrabAction : MonoBehaviour
         grabbedRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         m_ConnectingJoint2D = gameObject.AddComponent<FixedJoint2D>();
         m_ConnectingJoint2D.connectedBody = grabbedRigidbody2D;
-	SendMessage("OnGrabObject", grabbableScript);
+	    SendMessage("OnGrabObject", grabbableScript);
     }
 
     public void ReleaseObject(float disableGrabTime)
@@ -103,7 +103,7 @@ public class GrabAction : MonoBehaviour
             Destroy(m_ConnectingJoint2D);
             m_ConnectingJoint2D = null;
             m_GrabbableScript = null;
-	    _grabDisabledTime = disableGrabTime;
+	        _grabDisabledTime = disableGrabTime;
         }
     }
 
