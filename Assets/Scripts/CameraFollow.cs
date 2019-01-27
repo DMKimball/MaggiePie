@@ -34,13 +34,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         float fVertical = Input.GetAxis("Vertical");
-        if (fVertical > m_fVertAdjustInputCutoff)
-        {
-            Vector3 vLocalAnchorPos = m_CurrentFollowAnchor.localPosition;
-            vLocalAnchorPos.y = m_fCameraVertAdjust;
-            m_CurrentFollowAnchor.localPosition = vLocalAnchorPos;
-        }
-        else if (fVertical < -m_fVertAdjustInputCutoff)
+        if (fVertical < -m_fVertAdjustInputCutoff)
         {
             Vector3 vLocalAnchorPos = m_CurrentFollowAnchor.localPosition;
             vLocalAnchorPos.y = -m_fCameraVertAdjust;

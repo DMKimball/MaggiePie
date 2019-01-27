@@ -5599,8 +5599,8 @@ MonoBehaviour:
   m_RightCameraAnchor: {fileID: 1250407809}
   m_vDistanceTolerance: {x: 1.5, y: 0.5}
   m_vMaxDistance: {x: 20, y: 8}
-  m_vMoveSpeed: {x: 12, y: 3}
-  m_fCameraVertAdjust: 20
+  m_vMoveSpeed: {x: 12, y: 6}
+  m_fCameraVertAdjust: 25
   m_fVertAdjustInputCutoff: 0.5
 --- !u!20 &519420031
 Camera:
