@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GrabAnchor: {fileID: 3453600673447349306}
   m_SoundManager: {fileID: 0}
+  m_bIsPlayer: 1
 --- !u!114 &3453600673295242474
 MonoBehaviour:
   m_ObjectHideFlags: 0
