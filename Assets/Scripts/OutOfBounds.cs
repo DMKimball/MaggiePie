@@ -18,9 +18,6 @@ public class OutOfBounds : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name != "Bounds")
-	    return;
-
         RespawnScript respawn = collision.gameObject.GetComponent<RespawnScript>();
         if (respawn != null)
         {

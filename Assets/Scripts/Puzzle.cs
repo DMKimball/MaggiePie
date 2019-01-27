@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Puzzle : MonoBehaviour {
 	private Dictionary<int, PuzzlePiece> _enemyGrabbablePieces;
+    private int _numPieces = 0;
+    private int _numPiecesSolved = 0;
 
-	void Start() {
+    [SerializeField] private string _nextScene;
+    [SerializeField] private float _nextSceneDelayTime = 10.0f;
+
+    void Start() {
+        _numPiecesSolved = 0;
 		_enemyGrabbablePieces = new Dictionary<int, PuzzlePiece>();
 		var solution = transform.Find("Solution");
+        _numPieces = solution.transform.childCount;
 		for (var i = 0; i < solution.transform.childCount; ++i) {
 			var solutionPiece = solution.transform.GetChild(i);
 			solutionPiece.SendMessage("SetSolution");
@@ -39,4 +47,19 @@ public class Puzzle : MonoBehaviour {
 			enumerator.MoveNext();
 		return enumerator.Current.Value;
 	}
+
+    public void OnSnapToSolution()
+    {
+        _numPiecesSolved++;
+        if (_numPiecesSolved == _numPieces)
+        {
+            StartCoroutine(LevelComplete());
+        }
+    }
+
+    public IEnumerator LevelComplete()
+    {
+        yield return new WaitForSeconds(_nextSceneDelayTime);
+        SceneManager.LoadScene(_nextScene);
+    }
 }

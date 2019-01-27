@@ -37,6 +37,8 @@ public class PuzzlePiece : MonoBehaviour {
 		var grabbable = GetComponent<Grabbable>();
 		if (grabbable)
 			grabbable.ReleaseSelf(0);
+
+        transform.parent.parent.parent.SendMessage("OnSnapToSolution");
 	}
 
 	bool IsSolution(PuzzlePiece otherPiece) {

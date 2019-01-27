@@ -116,7 +116,10 @@ public class JumpAction : MonoBehaviour
             if (Vector2.Dot(collision.contacts[i].normal, new Vector2(0.0f, 1.0f)) > Mathf.Cos(m_fJumpResetAngleCutoff * Mathf.Deg2Rad))
             {
                 m_iNumJumps = 0;
-                m_GroundList.Add(collision.gameObject);
+                if (collision.otherCollider.gameObject == gameObject)
+                {
+                    m_GroundList.Add(collision.gameObject);
+                }
                 break;
             }
         }
