@@ -18,6 +18,10 @@ public class RespawnScript : MonoBehaviour
         
     }
 
+    public void SetRespawnPoint(Transform respawnPoint) {
+	    m_RespawnPoint = respawnPoint;
+    }
+
     public void Respawn()
     {
         if (m_RespawnPoint)
@@ -34,6 +38,12 @@ public class RespawnScript : MonoBehaviour
             if (grabbable)
             {
                 grabbable.ReleaseSelf(0);
+            }
+
+            EnemyBird enemyBird = GetComponent<EnemyBird>();
+            if (enemyBird)
+            {
+                enemyBird.Start();
             }
         }
     }

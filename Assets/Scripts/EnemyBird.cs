@@ -7,7 +7,7 @@ public class EnemyBird : MonoBehaviour
 	public float _speed = 5;
 	private Vector2 _direction;
 
-	void Start() {
+	public void Start() {
 		var puzzle = GameObject.FindObjectOfType<Puzzle>();
 		var puzzlePiece = puzzle.PickRandomPiece();
 		if (puzzlePiece) {
@@ -15,6 +15,9 @@ public class EnemyBird : MonoBehaviour
 			transform.position = position + new Vector3(-2*position.x, -position.y);
 			_direction = (position - transform.position).normalized;
 		}
+		var respawn = GetComponent<RespawnScript>();
+		if (respawn)
+			respawn.SetRespawnPoint(transform);
 	}
 
 	void Update() {
@@ -25,5 +28,9 @@ public class EnemyBird : MonoBehaviour
 	public void OnGrabObject(Grabbable grabbedObject) {
 		_speed *= .5f;
 		_direction.y = -_direction.y;
+	}
+
+	public void OnReleaseObject(Grabbable releasedObject) {
+		_speed *= 2.5f;
 	}
 }
