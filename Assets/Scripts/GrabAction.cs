@@ -6,6 +6,7 @@ public class GrabAction : MonoBehaviour
 {
     [SerializeField] private Transform m_GrabAnchor = null;
     [SerializeField] private JumpAction m_JumpActionScript= null;
+    [SerializeField] private SoundManager m_SoundManager = null;
 
     private Rigidbody2D m_Rigidbody2D = null;
     private Rigidbody2D m_GrabbedRigidbody2D = null;
@@ -16,6 +17,7 @@ public class GrabAction : MonoBehaviour
     void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        m_SoundManager = GetComponent<SoundManager>();
         m_GrabbedRigidbody2D = null;
         m_ConnectingJoint2D = null;
         m_GrabbableScript = null;
@@ -24,10 +26,6 @@ public class GrabAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Fire1") > 0)
-        {
-            ReleaseObject();
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -58,6 +56,10 @@ public class GrabAction : MonoBehaviour
     public void GrabObject(Grabbable grabbableScript)
     {
         ReleaseObject();
+        if (m_SoundManager)
+        {
+            m_SoundManager.PlayGrab();
+        }
 
         m_GrabbableScript = grabbableScript;
         m_GrabbableScript.SetGrabber(this);
@@ -78,6 +80,11 @@ public class GrabAction : MonoBehaviour
     {
         if (m_GrabbableScript)
         {
+            if (m_SoundManager)
+            {
+                m_SoundManager.PlayRelease();
+            }
+
             m_GrabbableScript.SetGrabber(null);
             Destroy(m_ConnectingJoint2D);
             m_ConnectingJoint2D = null;
