@@ -10,4 +10,12 @@ public class Puzzle : MonoBehaviour {
 			solutionPiece.SendMessage("SetSolution");
 		}
 	}
+
+	public PuzzlePiece PickRandomPiece() {
+		var pieces = transform.Find("Pieces");
+		if (pieces.childCount == 0)
+			return null;
+		var puzzlePiece = pieces.GetChild(Random.Range(0, pieces.childCount - 1));
+		return puzzlePiece.GetComponent<PuzzlePiece>();
+	}
 }
