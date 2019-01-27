@@ -11051,26 +11051,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3453600673295242473, guid: f55cf752b40f28744b8caba3d0ef9d46,
-        type: 3}
-      propertyPath: m_fFallSoundCutoff
-      value: -2
-      objectReference: {fileID: 0}
     - target: {fileID: 3453600673295242474, guid: f55cf752b40f28744b8caba3d0ef9d46,
         type: 3}
       propertyPath: m_RespawnPoint
       value: 
       objectReference: {fileID: 585334323}
-    - target: {fileID: 275506268355304363, guid: f55cf752b40f28744b8caba3d0ef9d46,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 275506268355304363, guid: f55cf752b40f28744b8caba3d0ef9d46,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f55cf752b40f28744b8caba3d0ef9d46, type: 3}
 --- !u!4 &982765425 stripped

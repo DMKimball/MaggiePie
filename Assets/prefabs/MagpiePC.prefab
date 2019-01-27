@@ -207,7 +207,7 @@ MonoBehaviour:
   m_fIdleSpeedTolerance: 0.1
   m_fHorizontalInputCutoff: 0.75
   m_fJumpResetAngleCutoff: 45
-  m_fFallSoundCutoff: -0.5
+  m_fFallSoundCutoff: -2
   m_iMaxJumps: 5
 --- !u!114 &3453600673295242478
 MonoBehaviour:
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_WalkSound: {fileID: 8300000, guid: df98cfa0760ef8a4da3da31e19b5ccee, type: 3}
   m_MainTheme: {fileID: 8300000, guid: 220b115ad170ac34881c95c250903cd1, type: 3}
   m_VictoryJingle: {fileID: 8300000, guid: 2ff9d5055aea39d40a898931a43b80c4, type: 3}
-  m_FallingLoop: {fileID: 8300000, guid: e9f69bcabbc9d8a46bf436305b9d6809, type: 3}
+  m_FallingLoop: {fileID: 8300000, guid: 4a3fefa6667d87a4eb11b5063385e8c9, type: 3}
 --- !u!82 &7635042113672888609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -579,11 +579,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e9f69bcabbc9d8a46bf436305b9d6809, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 4a3fefa6667d87a4eb11b5063385e8c9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.15
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
