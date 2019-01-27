@@ -28216,38 +28216,6 @@ PrefabInstance:
       propertyPath: m_Targets.Array.data[3]
       value: 
       objectReference: {fileID: 1303718189}
-    - target: {fileID: 6507998127762879988, guid: 0f35c578450a8b0489ab1fe22e0754d1,
-        type: 3}
-      propertyPath: fBaseAngle
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6507998127762879989, guid: 0f35c578450a8b0489ab1fe22e0754d1,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6507998127762879989, guid: 0f35c578450a8b0489ab1fe22e0754d1,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6507998126292731242, guid: 0f35c578450a8b0489ab1fe22e0754d1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88ff74295e7d538408b18f47b25db1ee,
-        type: 3}
-    - target: {fileID: 6507998126292731242, guid: 0f35c578450a8b0489ab1fe22e0754d1,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6507998127762879987, guid: 0f35c578450a8b0489ab1fe22e0754d1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: abde7026a3f0d0b4fbdc0cda09a481e9,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f35c578450a8b0489ab1fe22e0754d1, type: 3}
 --- !u!4 &7291007128303643739 stripped
