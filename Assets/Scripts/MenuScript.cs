@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    private void UpdateUIHidden()
+    public void UpdateUIHidden()
     {
         if (m_Panel)
         {
@@ -57,6 +57,28 @@ public class MenuScript : MonoBehaviour
         foreach (Button button in m_UIButtons)
         {
             button.enabled = m_DisplayUI;
+        }
+    }
+
+    public void SetFade( float alpha )
+    {
+        if (m_Panel)
+        {
+            Color c = m_Panel.color;
+            c.a = alpha;
+            m_Panel.color = c;
+        }
+        foreach (Image image in m_UIImages)
+        {
+            Color c = image.color;
+            c.a = alpha;
+            image.color = c;
+        }
+        foreach (Text text in m_UIText)
+        {
+            Color c = text.color;
+            c.a = alpha;
+            text.color = c;
         }
     }
 

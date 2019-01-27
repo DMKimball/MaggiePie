@@ -9,6 +9,7 @@ public class JumpAction : MonoBehaviour
     [SerializeField] private float m_fIdleSpeedTolerance = 0.1f;
     [SerializeField] private float m_fHorizontalInputCutoff = 0.75f;
 	[SerializeField] private float m_fJumpResetAngleCutoff = 45.0f;
+    [SerializeField] private float m_fFallSoundCutoff = -0.5f;
     [SerializeField] private int m_iMaxJumps = 1;
 
     private SpriteRenderer m_SpriteRenderer = null;
@@ -107,6 +108,16 @@ public class JumpAction : MonoBehaviour
                 m_SoundManager.StopWalk();
             }
         }
+
+        if (m_Rigidbody.velocity.y < m_fFallSoundCutoff)
+        {
+            m_SoundManager.PlayFall();
+        }
+        else
+        {
+            m_SoundManager.StopFall();
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)

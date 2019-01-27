@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip m_WalkSound;
     [SerializeField] private AudioClip m_MainTheme;
     [SerializeField] private AudioClip m_VictoryJingle;
+    [SerializeField] private AudioClip m_FallingLoop;
 
     void Start()
     {
@@ -93,6 +94,22 @@ public class SoundManager : MonoBehaviour
         {
             m_AudioSources[2].clip = m_VictoryJingle;
             m_AudioSources[2].Play();
+        }
+    }
+
+    public void PlayFall()
+    {
+        if (m_AudioSources.Length >= 4 && !m_AudioSources[3].isPlaying)
+        {
+            m_AudioSources[3].Play();
+        }
+    }
+
+    public void StopFall()
+    {
+        if (m_AudioSources.Length >= 4)
+        {
+            m_AudioSources[3].Stop();
         }
     }
 

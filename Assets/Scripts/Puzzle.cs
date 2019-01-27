@@ -9,7 +9,9 @@ public class Puzzle : MonoBehaviour {
     private int _numPiecesSolved = 0;
 
     [SerializeField] private string _nextScene;
+    [SerializeField] private float _fadeInTime = 1.0f;
     [SerializeField] private float _nextSceneDelayTime = 10.0f;
+    [SerializeField] private GameObject _victoryUI = null;
 
     void Start() {
         _numPiecesSolved = 0;
@@ -65,7 +67,30 @@ public class Puzzle : MonoBehaviour {
             player.SendMessage("PlayVictoryJingle");
         }
 
-        yield return new WaitForSeconds(_nextSceneDelayTime);
+        if (_victoryUI)
+        {
+            _victoryUI.SetActive(true);
+        }
+        yield return null;
+
+        MenuScript menuController = _victoryUI.GetComponent<MenuScript>();
+
+        if (menuController)
+        {
+            for (float fTimeSoFar = 0.0f; fTimeSoFar <= _fadeInTime; fTimeSoFar += Time.deltaTime)
+            {
+                menuController.SetFade(fTimeSoFar / _fadeInTime);
+                yield return null;
+            }
+            menuController.SetFade(1.0f);
+
+            yield return new WaitForSeconds(_nextSceneDelayTime - _fadeInTime);
+        }
+        else
+        {
+            yield return new WaitForSeconds(_nextSceneDelayTime);
+        }
+
         SceneManager.LoadScene(_nextScene);
     }
 }
