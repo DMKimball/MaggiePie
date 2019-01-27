@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7621062797619971905}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.14, y: 1.83, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -95,10 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2879eac38f9a7bb4784bff735b4aca96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FollowTarget: {fileID: 0}
   m_LeftCameraAnchor: {fileID: 0}
   m_RightCameraAnchor: {fileID: 0}
   m_vDistanceTolerance: {x: 1.5, y: 0.5}
-  m_vMaxDistance: {x: 20, y: 8}
+  m_vSpeedUpDistance: {x: 18, y: 5}
+  m_vMaxDistance: {x: 20, y: 6}
   m_vMoveSpeed: {x: 12, y: 6}
   m_fCameraVertAdjust: 25
   m_fVertAdjustInputCutoff: 0.5
+  m_fIdleSpeedTolerance: 0.1

@@ -528,6 +528,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 981727280}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &21962606 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3453600673295242472, guid: f55cf752b40f28744b8caba3d0ef9d46,
+    type: 3}
+  m_PrefabInstance: {fileID: 981727280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &21962607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3453600673295242479, guid: f55cf752b40f28744b8caba3d0ef9d46,
@@ -28291,6 +28297,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7621062797619971907, guid: d14052028d32b6147a92cac8a2360ca8,
+        type: 3}
+      propertyPath: m_FollowTarget
+      value: 
+      objectReference: {fileID: 21962606}
     - target: {fileID: 7621062797619971907, guid: d14052028d32b6147a92cac8a2360ca8,
         type: 3}
       propertyPath: m_LeftCameraAnchor
