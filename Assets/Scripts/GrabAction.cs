@@ -28,10 +28,19 @@ public class GrabAction : MonoBehaviour
     {
     }
 
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+	Grabbable grabbableScript = collider.gameObject.GetComponent<Grabbable>();
+	if (m_GrabbableScript == null && grabbableScript != null && collider.attachedRigidbody != null)
+        {
+            GrabObject(grabbableScript);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Grabbable grabbableScript = collision.gameObject.GetComponent<Grabbable>();
-        if (m_GrabbableScript == null && grabbableScript != null && collision.rigidbody != null)
+	Grabbable grabbableScript = collision.gameObject.GetComponent<Grabbable>();
+	if (m_GrabbableScript == null && grabbableScript != null && collision.otherRigidbody != null)
         {
             GrabObject(grabbableScript);
         }
