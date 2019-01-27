@@ -59,6 +59,12 @@ public class Puzzle : MonoBehaviour {
 
     public IEnumerator LevelComplete()
     {
+        GameObject player = GameObject.Find("MagpiePC");
+        if (player)
+        {
+            player.SendMessage("PlayVictoryJingle");
+        }
+
         yield return new WaitForSeconds(_nextSceneDelayTime);
         SceneManager.LoadScene(_nextScene);
     }

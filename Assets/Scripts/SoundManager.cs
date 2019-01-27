@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip[] m_GrabSounds;
     [SerializeField] private AudioClip[] m_ReleaseSounds;
     [SerializeField] private AudioClip m_WalkSound;
+    [SerializeField] private AudioClip m_MainTheme;
+    [SerializeField] private AudioClip m_VictoryJingle;
 
     void Start()
     {
@@ -76,6 +78,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayMainTheme()
+    {
+        if (m_AudioSources.Length >= 3 && m_MainTheme != null)
+        {
+            m_AudioSources[2].clip = m_MainTheme;
+            m_AudioSources[2].Play();
+        }
+    }
 
+    public void PlayVictoryJingle()
+    {
+        if (m_AudioSources.Length >= 3 && m_VictoryJingle != null)
+        {
+            m_AudioSources[2].clip = m_VictoryJingle;
+            m_AudioSources[2].Play();
+        }
+    }
 
 }

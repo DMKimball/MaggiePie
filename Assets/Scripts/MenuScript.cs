@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] private string m_sMainMenuLevel;
-    [SerializeField] private string m_sThisLevel;
+    [SerializeField] private string m_sTargetLevel;
+    [SerializeField] private bool m_bStartHidden;
 
     private bool m_DisplayUI = false;
 
@@ -19,7 +20,7 @@ public class MenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_DisplayUI = false;
+        m_DisplayUI = !m_bStartHidden;
 
         m_Panel = GetComponent<Image>();
         m_UIImages = GetComponentsInChildren<Image>();
@@ -41,7 +42,10 @@ public class MenuScript : MonoBehaviour
 
     private void UpdateUIHidden()
     {
-        m_Panel.enabled = m_DisplayUI;
+        if (m_Panel)
+        {
+            m_Panel.enabled = m_DisplayUI;
+        }
         foreach (Image image in m_UIImages)
         {
             image.enabled = m_DisplayUI;
@@ -56,9 +60,9 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    public void RestartLevel()
+    public void LoadLevel()
     {
-        SceneManager.LoadScene(m_sThisLevel);
+        SceneManager.LoadScene(m_sTargetLevel);
     }
 
     public void LoadTitleScreen()
