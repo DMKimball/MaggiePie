@@ -32,7 +32,10 @@ public class EnemyBird : MonoBehaviour
 	void Launch(PuzzlePiece puzzlePiece) {
 		_readyToLaunch = false;
 		var position = puzzlePiece.transform.position;
-		transform.position = position + new Vector3(-2*position.x, -position.y);
+		var vpPos = Camera.main.WorldToViewportPoint(position);
+		vpPos.x = vpPos.x < .5 ? 1 : 0;
+		vpPos.y = 1;
+		transform.position = Camera.main.ViewportToWorldPoint(vpPos);
 		_direction = (position - transform.position).normalized;
 		var respawn = GetComponent<RespawnScript>();
 		if (respawn)
