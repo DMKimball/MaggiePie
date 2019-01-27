@@ -6,6 +6,7 @@ public class CompassArrow : MonoBehaviour
 {
     [SerializeField] private Transform m_Player;
     [SerializeField] private Transform[] m_Targets;
+    [SerializeField] private float fBaseAngle = 0.0f;
 
     private RectTransform m_RectTransform = null;
 
@@ -31,7 +32,7 @@ public class CompassArrow : MonoBehaviour
             }
         }
 
-        float fAngle = 90.0f;
+        float fAngle = 90.0f + fBaseAngle;
         if (nearestTarget)
         {
             Vector3 vPlayerPos = m_Player.position;
@@ -44,7 +45,7 @@ public class CompassArrow : MonoBehaviour
             
         }
         Vector3 vEulerAngles = m_RectTransform.localEulerAngles;
-        vEulerAngles.z = fAngle;
+        vEulerAngles.z = fAngle + fBaseAngle;
         m_RectTransform.localEulerAngles = vEulerAngles;
     }
 }
