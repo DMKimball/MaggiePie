@@ -77,6 +77,7 @@ public class Puzzle : MonoBehaviour {
 
         if (menuController)
         {
+            menuController.SetFade(0.0f);
             for (float fTimeSoFar = 0.0f; fTimeSoFar <= _fadeInTime; fTimeSoFar += Time.deltaTime)
             {
                 menuController.SetFade(fTimeSoFar / _fadeInTime);

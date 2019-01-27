@@ -19,15 +19,18 @@ public class EnemyBird : MonoBehaviour
 	}
 
 	void Update() {
+		var rigidbody = GetComponent<Rigidbody2D>();
 		var spriteRenderer = GetComponent<SpriteRenderer>();
-		if (_readyToLaunch && spriteRenderer && !spriteRenderer.isVisible) {
+
+		var legalToLaunch = rigidbody.velocity.sqrMagnitude == 0
+			|| (spriteRenderer && !spriteRenderer.isVisible);
+		if (_readyToLaunch && legalToLaunch) {
 			var puzzle = GameObject.FindObjectOfType<Puzzle>();
 			var puzzlePiece = puzzle.PickRandomPiece();
 			if (puzzlePiece) {
 				Launch(puzzlePiece);
 			}
 		}
-		var rigidbody = GetComponent<Rigidbody2D>();
 		rigidbody.velocity = _direction * _speed;
 
 		if (spriteRenderer) {
@@ -50,7 +53,7 @@ public class EnemyBird : MonoBehaviour
 
 	public void OnGrabObject(Grabbable grabbedObject) {
 		_speed = _baseSpeed/2;
-		_baseSpeed = Mathf.Max(_baseSpeedMin, _baseSpeed - _baseSpeedInc);
+		_baseSpeed = Mathf.Max(_baseSpeedMin, _baseSpeed - 2*_baseSpeedInc);
 		_direction.y = -_direction.y;
 	}
 

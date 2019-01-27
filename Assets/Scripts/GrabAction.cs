@@ -85,6 +85,8 @@ public class GrabAction : MonoBehaviour
         }
         var grabbedRigidbody2D = grabbableScript.GetComponent<Rigidbody2D>();
         grabbedRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        var grabbedCollider = grabbableScript.GetComponent<Collider2D>();
+	grabbedCollider.isTrigger = true;
         m_ConnectingJoint2D = gameObject.AddComponent<FixedJoint2D>();
         m_ConnectingJoint2D.connectedBody = grabbedRigidbody2D;
 	    SendMessage("OnGrabObject", grabbableScript);
@@ -100,6 +102,8 @@ public class GrabAction : MonoBehaviour
             }
 
             m_GrabbableScript.SetGrabber(null);
+	    var grabbedCollider = m_GrabbableScript.GetComponent<Collider2D>();
+	    grabbedCollider.isTrigger = false;
             Destroy(m_ConnectingJoint2D);
             m_ConnectingJoint2D = null;
 	    SendMessage("OnReleaseObject", disableGrabTime);
