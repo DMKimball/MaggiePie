@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzlePiece : MonoBehaviour {
+	public bool IsGrabbableByEnemy() {
+		var rigidbody = GetComponent<Rigidbody2D>();
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+		return spriteRenderer && spriteRenderer.enabled
+			&& spriteRenderer.isVisible
+			&& rigidbody.bodyType != RigidbodyType2D.Static;
+	}
+
 	void SetSolution() {
 		var rigidbody = GetComponent<Rigidbody2D>();
 		if (rigidbody != null) {
