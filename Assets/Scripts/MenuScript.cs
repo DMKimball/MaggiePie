@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] private string m_sMainMenuLevel;
-    [SerializeField] private string m_sTargetLevel;
+    [SerializeField] private string[] m_sTargetLevels;
     [SerializeField] private bool m_bStartHidden;
 
     private bool m_DisplayUI = false;
@@ -82,9 +82,12 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    public void LoadLevel()
+    public void LoadLevel( int index )
     {
-        SceneManager.LoadScene(m_sTargetLevel);
+        if (index < m_sTargetLevels.Length)
+        {
+            SceneManager.LoadScene(m_sTargetLevels[index]);
+        }
     }
 
     public void LoadTitleScreen()
