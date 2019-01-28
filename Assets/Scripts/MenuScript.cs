@@ -33,7 +33,7 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && m_bStartHidden)
         {
             m_DisplayUI = !m_DisplayUI;
             UpdateUIHidden();
